@@ -6,6 +6,7 @@
 package session_test
 
 import (
+	session2 "github.com/xelaj/mtproto/session"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -13,7 +14,6 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/xelaj/mtproto/internal/session"
 )
 
 func TestMTProto_SaveSession(t *testing.T) {
@@ -22,8 +22,8 @@ func TestMTProto_SaveSession(t *testing.T) {
 
 	os.Remove(storePath)
 
-	storage := session.NewFromFile(storePath)
-	err := storage.Store(&session.Session{
+	storage := session2.NewFromFile(storePath)
+	err := storage.Store(&session2.Session{
 		Key:      []byte("some auth key"),
 		Hash:     []byte("oooooh that's definitely a key hash!"),
 		Salt:     0,
@@ -45,12 +45,12 @@ func TestMTProto_LoadSession(t *testing.T) {
 	ioutil.WriteFile(storePath, []byte(tmpData), 0666)
 	defer os.Remove(storePath)
 
-	storage := session.NewFromFile(storePath)
+	storage := session2.NewFromFile(storePath)
 
 	sess, err := storage.Load()
 	require.NoError(t, err)
 
-	assert.Equal(t, &session.Session{
+	assert.Equal(t, &session2.Session{
 		Key:      []byte("some auth key"),
 		Hash:     []byte("oooooh that's definitely a key hash!"),
 		Salt:     0,
