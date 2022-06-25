@@ -1,12 +1,12 @@
 // Copyright (c) 2020-2021 KHS Films
 //
 // This file is a part of mtproto package.
-// See https://github.com/xelaj/mtproto/blob/master/LICENSE for details
+// See https://github.com/Kalinin-Andrey/mtproto/blob/master/LICENSE for details
 
 package session_test
 
 import (
-	session2 "github.com/xelaj/mtproto/session"
+	session2 "github.com/Kalinin-Andrey/mtproto/session"
 	"io/ioutil"
 	"os"
 	"path/filepath"

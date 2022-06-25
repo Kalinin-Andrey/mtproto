@@ -1,12 +1,12 @@
 // Copyright (c) 2020-2021 KHS Films
 //
 // This file is a part of mtproto package.
-// See https://github.com/xelaj/mtproto/blob/master/LICENSE for details
+// See https://github.com/Kalinin-Andrey/mtproto/blob/master/LICENSE for details
 
 package objects
 
 import (
-	"github.com/xelaj/mtproto/internal/encoding/tl"
+	"github.com/Kalinin-Andrey/mtproto/internal/encoding/tl"
 )
 
 func init() {

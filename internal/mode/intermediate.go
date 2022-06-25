@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/xelaj/mtproto/internal/encoding/tl"
+	"github.com/Kalinin-Andrey/mtproto/internal/encoding/tl"
 )
 
 type intermediate struct {

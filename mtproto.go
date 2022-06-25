@@ -1,7 +1,7 @@
 // Copyright (c) 2020-2021 KHS Films
 //
 // This file is a part of mtproto package.
-// See https://github.com/xelaj/mtproto/blob/master/LICENSE for details
+// See https://github.com/Kalinin-Andrey/mtproto/blob/master/LICENSE for details
 
 package mtproto
 
@@ -17,13 +17,13 @@ import (
 	"github.com/pkg/errors"
 	"github.com/xelaj/errs"
 
-	"github.com/xelaj/mtproto/internal/encoding/tl"
-	"github.com/xelaj/mtproto/internal/mode"
-	"github.com/xelaj/mtproto/internal/mtproto/messages"
-	"github.com/xelaj/mtproto/internal/mtproto/objects"
-	"github.com/xelaj/mtproto/internal/transport"
-	"github.com/xelaj/mtproto/internal/utils"
-	"github.com/xelaj/mtproto/session"
+	"github.com/Kalinin-Andrey/mtproto/internal/encoding/tl"
+	"github.com/Kalinin-Andrey/mtproto/internal/mode"
+	"github.com/Kalinin-Andrey/mtproto/internal/mtproto/messages"
+	"github.com/Kalinin-Andrey/mtproto/internal/mtproto/objects"
+	"github.com/Kalinin-Andrey/mtproto/internal/transport"
+	"github.com/Kalinin-Andrey/mtproto/internal/utils"
+	"github.com/Kalinin-Andrey/mtproto/session"
 )
 
 type MTProto struct {

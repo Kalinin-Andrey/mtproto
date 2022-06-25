@@ -9,9 +9,9 @@ import (
 	"github.com/xelaj/go-dry"
 
 	"github.com/k0kubun/pp"
-	"github.com/xelaj/mtproto/telegram"
+	"github.com/Kalinin-Andrey/mtproto/telegram"
 
-	utils "github.com/xelaj/mtproto/examples/example_utils"
+	utils "github.com/Kalinin-Andrey/mtproto/examples/example_utils"
 )
 
 const (
