@@ -17,9 +17,9 @@ import (
 
 	ige "github.com/Kalinin-Andrey/mtproto/internal/aes_ige"
 	"github.com/Kalinin-Andrey/mtproto/internal/encoding/tl"
-	"github.com/Kalinin-Andrey/mtproto/internal/keys"
 	"github.com/Kalinin-Andrey/mtproto/internal/math"
 	"github.com/Kalinin-Andrey/mtproto/internal/mtproto/objects"
+	"github.com/Kalinin-Andrey/mtproto/keys"
 )
 
 // https://tlgrm.ru/docs/mtproto/auth_key
