@@ -1,6 +1,6 @@
 module github.com/Kalinin-Andrey/mtproto
 
-go 1.17
+go 1.18
 
 require (
 	github.com/fatih/structtag v1.2.0

@@ -16,7 +16,7 @@ import (
 	dry "github.com/xelaj/go-dry"
 
 	"github.com/Kalinin-Andrey/mtproto"
-	"github.com/Kalinin-Andrey/mtproto/internal/keys"
+	"github.com/Kalinin-Andrey/mtproto/keys"
 )
 
 type Client struct {
