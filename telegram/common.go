@@ -6,6 +6,7 @@
 package telegram
 
 import (
+	"github.com/Kalinin-Andrey/mtproto/session"
 	"net"
 	"reflect"
 	"runtime"
@@ -16,7 +17,7 @@ import (
 	dry "github.com/xelaj/go-dry"
 
 	"github.com/Kalinin-Andrey/mtproto"
-	"github.com/Kalinin-Andrey/mtproto/keys"
+	"github.com/Kalinin-Andrey/mtproto/internal/keys"
 )
 
 type Client struct {
@@ -26,6 +27,8 @@ type Client struct {
 }
 
 type ClientConfig struct {
+	// if SessionStorage is nil, SessionFile is required, otherwise it will be ignored
+	SessionStorage  session.SessionLoader
 	SessionFile     string
 	ServerHost      string
 	PublicKeysFile  string
@@ -48,10 +51,6 @@ func NewClient(c ClientConfig) (*Client, error) { //nolint: gocritic arg is not 
 		return nil, errs.NotFound("file", c.PublicKeysFile)
 	}
 
-	if !dry.PathIsWritable(c.SessionFile) {
-		return nil, errs.Permission(c.SessionFile).Scope("write")
-	}
-
 	if c.DeviceModel == "" {
 		c.DeviceModel = "Unknown"
 	}
@@ -69,11 +68,22 @@ func NewClient(c ClientConfig) (*Client, error) { //nolint: gocritic arg is not 
 		return nil, errors.Wrap(err, "reading public keys")
 	}
 
-	m, err := mtproto.NewMTProto(mtproto.Config{
+	mtprotoConfig := mtproto.Config{
 		AuthKeyFile: c.SessionFile,
 		ServerHost:  c.ServerHost,
 		PublicKey:   publicKeys[0],
-	})
+	}
+	if c.SessionStorage != nil {
+		mtprotoConfig.SessionStorage = c.SessionStorage
+	} else if c.SessionFile != "" {
+		if !dry.PathIsWritable(c.SessionFile) {
+			return nil, errs.Permission(c.SessionFile).Scope("write")
+		}
+	} else {
+		return nil, errors.New("SessionStorage or SessionFile mast be set.")
+	}
+	m, err := mtproto.NewMTProto(mtprotoConfig)
+
 	if err != nil {
 		return nil, errors.Wrap(err, "setup common MTProto client")
 	}
